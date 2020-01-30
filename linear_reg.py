@@ -6,7 +6,7 @@ from sklearn import linear_model
 
 data = pd.read_csv("weather_data.csv", delimiter=',')
 
-yxy=data['Temperature  [2 m above gnd]'].values
+yxy=data['Temperature'].values
 xyx=data['Sl'].values
 
 xyx=np.reshape(xyx, (-1,1))
