@@ -13,14 +13,14 @@ wget function directly downloads the zip file.
 unzip to extract the file.
 
 Renamed to weather.csv file for further usage.
-"""
+
 
 !wget https://storage.googleapis.com/tensorflow/tf-keras-datasets/jena_climate_2009_2016.csv.zip -O weather.zip
 !rm -rf sample_data
 !unzip weather.zip
 !rm weather.zip
 !mv jena_climate_2009_2016.csv weather.csv
-
+"""
 # Commented out IPython magic to ensure Python compatibility.
 import pandas as pd
 import numpy as np
