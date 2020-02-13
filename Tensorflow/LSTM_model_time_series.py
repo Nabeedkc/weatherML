@@ -72,7 +72,7 @@ if delta:
 else:
   future = 0
 
-plt.title("Sample Example")
+plt.title("Example")
 
 for i, xe in enumerate(plot_data):
   if i:
