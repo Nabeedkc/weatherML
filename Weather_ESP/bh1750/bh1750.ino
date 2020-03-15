@@ -14,10 +14,8 @@ void setup()
  
 void loop()
 {
-  if (lux_snsr.hasValue())
-  {
     float lux = lux_snsr.getLux();
     Serial.println(lux);
     lux_snsr.start();
-  }
+    delay(1000);
 }

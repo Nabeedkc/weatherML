@@ -6,7 +6,6 @@
 const char* ssid = "Redmi";
 const char* password = "qwertyui";
 
-WebServer server(80);
 
 uint8_t DHTPin = 4; 
 DHT dht(DHTPin, DHTTYPE);                
@@ -20,7 +19,7 @@ void setup() {
   
   pinMode(DHTPin, INPUT);
 
-  dht.begin();              
+  dht.begin();
 
   Serial.println("Connecting to ");
   Serial.println(ssid);
