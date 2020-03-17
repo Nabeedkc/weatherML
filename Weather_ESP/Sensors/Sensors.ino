@@ -9,6 +9,7 @@ const char* ssid = "Redmi";
 const char* password = "qwertyui";
 
 int DHT_pin = 4;
+int CSM_pin = 36;
 Adafruit_BME280 bme;
 hp_BH1750 lux_snsr;
 
@@ -16,6 +17,7 @@ float temperture;
 float humidity;
 float pressure;
 float lux;
+int moisture=0;
 
 DHT dht(DHT_pin, DHT22);
 
@@ -45,14 +47,16 @@ void loop()
 {
 	temperture = dht.readTemperature();
 	humidity = dht.readHumidity();
-	pressure = bme.readPressure();
+	pressure = bme.readPressure() / 100.0F;
 	lux = lux_snsr.getLux();
 	lux_snsr.start();
+  moisture = analogRead(CSM_pin);
 	
 	Serial.print("Temperature: "); Serial.println(temperture);
 	Serial.print("Humidity   : "); Serial.println(humidity);
 	Serial.print("Pressure   : "); Serial.println(pressure);
 	Serial.print("Light-LUX  : "); Serial.println(lux);
+  Serial.print("Moisture   : "); Serial.println(moisture);
   Serial.println(""); 
 	delay(3000);
 }
