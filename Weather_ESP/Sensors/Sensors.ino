@@ -7,6 +7,8 @@
 
 const char* ssid = "Redmi";
 const char* password = "qwertyui";
+const char* FIREBASE_HOST = "firebase id";
+const char* FIREBASE_AUTH = "secret firebase key";
 
 int DHT_pin = 4;
 int CSM_pin = 36;
@@ -36,6 +38,7 @@ void setup()
 	
 	pinMode(DHT_pin, INPUT);
 	
+	Firebase.begin (FIREBASE_HOST, FIREBASE_AUTH);
 	dht.begin();
 	bme.begin(0x76);
 	lux_snsr.begin(0x23);
@@ -50,13 +53,20 @@ void loop()
 	pressure = bme.readPressure() / 100.0F;
 	lux = lux_snsr.getLux();
 	lux_snsr.start();
-  moisture = analogRead(CSM_pin);
+	moisture = analogRead(CSM_pin);
 	
 	Serial.print("Temperature: "); Serial.println(temperture);
 	Serial.print("Humidity   : "); Serial.println(humidity);
 	Serial.print("Pressure   : "); Serial.println(pressure);
 	Serial.print("Light-LUX  : "); Serial.println(lux);
-  Serial.print("Moisture   : "); Serial.println(moisture);
-  Serial.println(""); 
+	Serial.print("Moisture   : "); Serial.println(moisture);
+	Serial.println(""); 
 	delay(3000);
+  
+  Firebase.pushString ("Temperature", String(temperture) + String("%"); 
+  Firebase.pushString ("Humidity", String(humidity) + String("°C");  
+  Firebase.pushString ("Pressure", String(pressure) + String("Pa"); 
+  Firebase.pushString ("Light-LUX", String(lux) + String("lux"); 
+  Firebase.pushString ("Moisture", String(moisture) + String("%"); 		       
+		       
 }
