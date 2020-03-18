@@ -53,14 +53,14 @@ void loop()
 	pressure = bme.readPressure() / 100.0F;
 	lux = lux_snsr.getLux();
 	lux_snsr.start();
-  moisture = analogRead(CSM_pin);
+	moisture = analogRead(CSM_pin);
 	
 	Serial.print("Temperature: "); Serial.println(temperture);
 	Serial.print("Humidity   : "); Serial.println(humidity);
 	Serial.print("Pressure   : "); Serial.println(pressure);
 	Serial.print("Light-LUX  : "); Serial.println(lux);
-  Serial.print("Moisture   : "); Serial.println(moisture);
-  Serial.println(""); 
+	Serial.print("Moisture   : "); Serial.println(moisture);
+	Serial.println(""); 
 	delay(3000);
   
   Firebase.pushString ("Temperature", String(temperture) + String("%"); 
