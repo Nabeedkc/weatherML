@@ -1,14 +1,15 @@
 #include <WiFi.h>
 #include <Wire.h>
 #include <DHT.h>
+#include <FirebaseArduino.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include <hp_BH1750.h>
 
 const char* ssid = "Redmi";
 const char* password = "qwertyui";
-const char* FIREBASE_HOST = "firebase id";
-const char* FIREBASE_AUTH = "secret firebase key";
+const char* FIREBASE_HOST = "weather-station-3bfb2.firebaseio.com";
+const char* FIREBASE_AUTH = "wbeB6VYLh1smxSKVRfnh6E7wMYh3eDYYQYO6Mipz";
 
 int DHT_pin = 4;
 int CSM_pin = 36;
