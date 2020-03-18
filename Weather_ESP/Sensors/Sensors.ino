@@ -1,7 +1,7 @@
 #include <WiFi.h>
 #include <Wire.h>
 #include <DHT.h>
-#include <FirebaseArduino.h>
+#include <FirebaseESP32.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 #include <hp_BH1750.h>
@@ -10,6 +10,7 @@ const char* ssid = "Redmi";
 const char* password = "qwertyui";
 const char* FIREBASE_HOST = "weather-station-3bfb2.firebaseio.com";
 const char* FIREBASE_AUTH = "wbeB6VYLh1smxSKVRfnh6E7wMYh3eDYYQYO6Mipz";
+FirebaseData firebaseData;
 
 int DHT_pin = 4;
 int CSM_pin = 36;
@@ -64,10 +65,10 @@ void loop()
 	Serial.println(""); 
 	delay(3000);
   
-  Firebase.pushString ("Temperature", String(temperture) + String("%"); 
-  Firebase.pushString ("Humidity", String(humidity) + String("°C");  
-  Firebase.pushString ("Pressure", String(pressure) + String("Pa"); 
-  Firebase.pushString ("Light-LUX", String(lux) + String("lux"); 
-  Firebase.pushString ("Moisture", String(moisture) + String("%"); 		       
+  Firebase.pushString(firebaseData, "Temperature", String(temperture)); 
+  Firebase.pushString(firebaseData, "Humidity", String(humidity));
+  Firebase.pushString(firebaseData, "Pressure", String(pressure));
+  Firebase.pushString(firebaseData, "Light-LUX", String(lux));
+  Firebase.pushString(firebaseData, "Moisture", String(moisture));
 		       
 }
