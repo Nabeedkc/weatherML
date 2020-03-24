@@ -65,10 +65,12 @@ void loop()
 	Serial.println(""); 
 	delay(3000);
   
-  Firebase.pushString(firebaseData, "Temperature", String(temperture)); 
-  Firebase.pushString(firebaseData, "Humidity", String(humidity));
-  Firebase.pushString(firebaseData, "Pressure", String(pressure));
-  Firebase.pushString(firebaseData, "Light-LUX", String(lux));
-  Firebase.pushString(firebaseData, "Moisture", String(moisture));
+
+  Firebase.pushString(firebaseData, "Temperature", String(temperture) + "°C"); 
+  Firebase.pushString(firebaseData, "Humidity", String(humidity) + "%");
+  Firebase.pushString(firebaseData, "Pressure", String(pressure) + "Pa");
+  Firebase.pushString(firebaseData, "Light-LUX", String(lux) + "Lux");
+  Firebase.pushString(firebaseData, "Moisture", String(moisture) + "%");
+
 		       
 }
